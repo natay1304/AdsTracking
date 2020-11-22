@@ -5,6 +5,8 @@ using UnityEngine.UI;
 using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
 using System;
+using AppsFlyerSDK;
+using Facebook.Unity;
 
 public class Locating : MonoBehaviour
 {
@@ -51,8 +53,17 @@ public class Locating : MonoBehaviour
         {
             Screen.orientation = ScreenOrientation.LandscapeLeft;
             SceneManager.LoadScene("Webview");
+            AppsFlyer.sendEvent("webview-srarted", null);
+            FB.LogAppEvent("webview-srarted");
+            
         }
         else
+        {
             SceneManager.LoadScene("Wrapper");
+            AppsFlyer.sendEvent("wrapper", null);
+            FB.LogAppEvent("wrapper");
+        }
     }
+
+    
 }

@@ -4,20 +4,16 @@ using UnityEngine;
 
 public class SceneOrientation : MonoBehaviour
 {
-    public bool landscapeOrientation;
+    public bool autorotateToLandscapeRight, autorotateToLandscapeLeft, autorotateToPortrait, autorotateToPortraitUpsideDown;
+    public ScreenOrientation orientation;
 
     void Start()
-    {
-        if(landscapeOrientation)
-        {
-            Screen.orientation = ScreenOrientation.LandscapeLeft; 
-            Screen.autorotateToLandscapeRight = true;
-            Screen.autorotateToLandscapeLeft = true;
-        }
-        else
-        {
-            Screen.orientation = ScreenOrientation.Portrait;
-            Screen.orientation = ScreenOrientation.AutoRotation;
-        }
+    {  
+        Screen.orientation = orientation;
+
+        Screen.autorotateToLandscapeLeft = autorotateToLandscapeLeft;
+        Screen.autorotateToLandscapeRight = autorotateToLandscapeRight;
+        Screen.autorotateToPortrait = autorotateToPortrait;
+        Screen.autorotateToPortraitUpsideDown = autorotateToPortraitUpsideDown;
     }
 }

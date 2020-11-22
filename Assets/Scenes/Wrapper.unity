@@ -417,7 +417,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4167df42295b0504d956edcf49ab8b61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  landscapeOrientation: 1
+  autorotateToLandscapeRight: 0
+  autorotateToLandscapeLeft: 0
+  autorotateToPortrait: 0
+  autorotateToPortraitUpsideDown: 0
+  orientation: 5
 --- !u!1 &443907549
 GameObject:
   m_ObjectHideFlags: 0
