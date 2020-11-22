@@ -266,7 +266,8 @@ public class UniWebView: MonoBehaviour {
         }
     }
 
-    void Awake() {
+    void Awake()
+    {
         var listenerObject = new GameObject(id);
         listener = listenerObject.AddComponent<UniWebViewNativeListener>();
         listenerObject.transform.parent = transform;

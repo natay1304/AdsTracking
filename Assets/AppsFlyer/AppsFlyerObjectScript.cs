@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using AppsFlyerSDK;
+using UnityEngine.UI;
 
 // This class is intended to be used the the AppsFlyerObject.prefab
 
@@ -14,6 +15,8 @@ public class AppsFlyerObjectScript : MonoBehaviour , IAppsFlyerConversionData
     public string appID;
     public bool isDebug;
     public bool getConversionData;
+
+    public Text installs;
     //******************************//
 
     void Start()
@@ -29,7 +32,7 @@ public class AppsFlyerObjectScript : MonoBehaviour , IAppsFlyerConversionData
 
     void Update()
     {
-
+        
     }
 
     // Mark AppsFlyer CallBacks
@@ -55,5 +58,10 @@ public class AppsFlyerObjectScript : MonoBehaviour , IAppsFlyerConversionData
     public void onAppOpenAttributionFailure(string error)
     {
         AppsFlyer.AFLog("onAppOpenAttributionFailure", error);
+    }
+
+    public void sendEvent(string eventName, Dictionary<string, string> eventValues)
+    {
+        
     }
 }
