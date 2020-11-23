@@ -418,4 +418,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4167df42295b0504d956edcf49ab8b61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  landscapeOrientation: 0
+  autorotateToLandscapeRight: 1
+  autorotateToLandscapeLeft: 1
+  autorotateToPortrait: 1
+  autorotateToPortraitUpsideDown: 1
+  orientation: 5
