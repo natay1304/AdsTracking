@@ -17,12 +17,14 @@ public class FBInitialization : MonoBehaviour
         if (!FB.IsInitialized)
         {
             FB.Init(InitCallback, OnHideUnity);
+            //FB.Mobile.FetchDeferredAppLinkData(DeepLinkCallback);
+            Debug.Log("awake not init");
         }
         else
         {
-            FB.ActivateApp();
-            
+            FB.ActivateApp();            
             FB.Mobile.FetchDeferredAppLinkData(DeepLinkCallback);
+            Debug.Log("awake active app");
         }
 
         DontDestroyOnLoad(this);
@@ -33,7 +35,8 @@ public class FBInitialization : MonoBehaviour
         if (FB.IsInitialized)
         {
             FB.ActivateApp();
-            Debug.Log("FB is initialized");
+            Debug.Log("FB is initialized шnit call");
+            FB.Mobile.FetchDeferredAppLinkData(DeepLinkCallback);
         }
         else
         {
@@ -68,11 +71,13 @@ public class FBInitialization : MonoBehaviour
 
     void DeepLinkCallback(IAppLinkResult result)
     {
+        Debug.Log("result " + result.Url);
         if (!String.IsNullOrEmpty(result.Url))
         {
-            Debug.Log(result.Url);
+            Debug.Log("scriptable " + url.value);
             url.value = result.Url;
             deeplink.text += result.Url;
+            Debug.Log(deeplink.text);
         }
     }
 }
