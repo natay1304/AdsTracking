@@ -52,18 +52,16 @@ public class Locating : MonoBehaviour
         if (res.countryCode.ToLower() == "ru")
         {
             Screen.orientation = ScreenOrientation.LandscapeLeft;
-            SceneManager.LoadScene("Webview");
+            SceneManager.LoadScene(1);
             AppsFlyer.sendEvent("webview-srarted", null);
-            FB.LogAppEvent("webview-srarted");
-            
+            FB.LogAppEvent("webview-srarted");           
         }
         else
         {
-            SceneManager.LoadScene("Wrapper");
+            SceneManager.LoadScene(2);
             AppsFlyer.sendEvent("wrapper", null);
             FB.LogAppEvent("wrapper");
+            Debug.Log(res.countryCode);
         }
-    }
-
-    
+    }    
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using AppsFlyerSDK;
 using UnityEngine.UI;
+using System;
 
 // This class is intended to be used the the AppsFlyerObject.prefab
 
@@ -16,11 +17,13 @@ public class AppsFlyerObjectScript : MonoBehaviour , IAppsFlyerConversionData
     public bool isDebug;
     public bool getConversionData;
 
-    public Text installs;
+    public event Action<Dictionary<string, object>> OnConversionDataSuccess;
     //******************************//
 
     void Start()
     {
+        AppsFlyer.getConversionData(AFInAppEvents.LEVEL);
+
         // These fields are set from the editor so do not modify!
         //******************************//
         AppsFlyer.setIsDebug(isDebug);
@@ -30,16 +33,12 @@ public class AppsFlyerObjectScript : MonoBehaviour , IAppsFlyerConversionData
         AppsFlyer.startSDK();
     }
 
-    void Update()
-    {
-        
-    }
-
     // Mark AppsFlyer CallBacks
     public void onConversionDataSuccess(string conversionData)
     {
         AppsFlyer.AFLog("didReceiveConversionData", conversionData);
         Dictionary<string, object> conversionDataDictionary = AppsFlyer.CallbackStringToDictionary(conversionData);
+        OnConversionDataSuccess?.Invoke(conversionDataDictionary);
         // add deferred deeplink logic here
     }
 
@@ -58,10 +57,5 @@ public class AppsFlyerObjectScript : MonoBehaviour , IAppsFlyerConversionData
     public void onAppOpenAttributionFailure(string error)
     {
         AppsFlyer.AFLog("onAppOpenAttributionFailure", error);
-    }
-
-    public void sendEvent(string eventName, Dictionary<string, string> eventValues)
-    {
-        
     }
 }
